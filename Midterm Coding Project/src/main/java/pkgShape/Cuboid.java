@@ -27,7 +27,7 @@ public class Cuboid extends Rectangle {
 	// Override area method to compute total surface area of cuboid
 	@Override
 	public double area() {
-		return 2*super.area() + 2*super.getWidth()*this.iDepth + super.getLength()*this.iDepth;
+		return 2*super.area() + 2*super.getWidth()*this.iDepth + 2*super.getLength()*this.iDepth;
 	}
 	
 	// Perimeter method does not apply to a cuboid
