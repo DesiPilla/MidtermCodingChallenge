@@ -21,7 +21,7 @@ public class CuboidTest {
 	@Test
 	public void DepthGetter_Test_Fail() {
 		Cuboid testCub = new Cuboid(3, 4, 5);
-		int expectedDepth = 100;
+		int expectedDepth = 4;
 		int actualDepth = testCub.getDepth();
 		
 		assertNotEquals(expectedDepth, actualDepth);

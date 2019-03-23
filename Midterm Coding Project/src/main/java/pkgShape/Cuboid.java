@@ -4,9 +4,14 @@ public class Cuboid extends Rectangle {
 
 	private int iDepth;
 	
-	public Cuboid(int Width, int Length, int Depth) {
+	// 3-arg constructor 
+	public Cuboid(int Width, int Length, int Depth) throws IllegalArgumentException {
 		super(Width, Length);
-		this.iDepth = Depth;
+		if (Depth <= 0 )	// Width and Length values must be positive
+			throw new IllegalArgumentException("Depth must be positive");
+		else {
+			this.iDepth = Depth;
+		}
 	}
 	
 	// Getter and setter for iDepth instance variable
@@ -31,10 +36,14 @@ public class Cuboid extends Rectangle {
 	}
 	
 	// Perimeter method does not apply to a cuboid
-	// write code to throw exception
+	@Override
+	public double perimeter() throws UnsupportedOperationException {
+		throw new UnsupportedOperationException("There is no perimeter for a cuboid");
+	}
 	
 	// CompareTo method to compare areas of an rectangle parameter and current instance
-	public int compareTo(Cuboid cub) {
-		return (int) Math.round(this.volume() - cub.volume());
+	@Override
+	public int compareTo(Object cub) throws UnsupportedOperationException {
+		throw new UnsupportedOperationException("Use SortByArea or SortByVolume");
 	}
 }

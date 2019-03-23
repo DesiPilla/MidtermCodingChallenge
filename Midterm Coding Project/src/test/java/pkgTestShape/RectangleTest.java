@@ -2,11 +2,22 @@ package pkgTestShape;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.junit.Test;
 import pkgShape.Rectangle;
 
 public class RectangleTest {
 
+	// Tests construction of instance object
+	@Test public void Construction_Test_Pass() {
+		Rectangle testRec = new Rectangle(3, 4);
+		assertTrue( testRec instanceof Rectangle);
+	}
+
+	
+	
 	// Tests getters and setters for the iWidth instance variable
 	@Test
 	public void WidthGetter_Test_Pass() {
@@ -137,4 +148,54 @@ public class RectangleTest {
 		assertNotEquals(expectedPerimeter, actualPerimeter);
 	}
 	
+	
+	
+	// Tests to make sure IllegalArgumentException is being thrown properly
+	@Test(expected = IllegalArgumentException.class)
+	public void ThrownProperly_Test_InitialWidth() {
+		Rectangle testRec = new Rectangle(0, 4);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ThrownProperly_Test_InitialLength() {
+		Rectangle testRec = new Rectangle(3, 0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ThrownProperly_Test_SetWidth() {
+		Rectangle testRec = new Rectangle(3, 4);
+		testRec.setWidth(0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void ThrownProperly_Test_SetLength() {
+		Rectangle testRec = new Rectangle(3, 4);
+		testRec.setLength(0);
+	}
+	
+	
+	
+	// Tests the compareTo method
+	@Test
+	public void CompareTo_Test_Pass() {
+		Rectangle testRec1 = new Rectangle(3, 4);
+		Rectangle testRec2 = new Rectangle(6, 7);
+		int expectedComp = -30;
+		int actualComp;
+		
+		actualComp = testRec1.compareTo(testRec2);
+		assertEquals(expectedComp, actualComp);
+	}
+	
+	@Test
+	public void CompareTo_Test_Fail() {
+		Rectangle testRec1 = new Rectangle(3, 4);
+		Rectangle testRec2 = new Rectangle(6, 7);
+		int expectedComp = 30;
+		int actualComp;
+		
+		actualComp = testRec1.compareTo(testRec2);
+		assertNotEquals(expectedComp, actualComp);
+	}
+
 }
