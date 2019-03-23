@@ -1,5 +1,8 @@
 package pkgShape;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Cuboid extends Rectangle {
 
 	private int iDepth;
@@ -20,7 +23,11 @@ public class Cuboid extends Rectangle {
 	}
 	
 	public void setDepth(int Depth) {
-		this.iDepth = Depth;
+		if (Depth <= 0 )	// Width and Length values must be positive
+			throw new IllegalArgumentException("Depth must be positive");
+		else {
+			this.iDepth = Depth;
+		}
 	}
 	
 	
@@ -46,4 +53,5 @@ public class Cuboid extends Rectangle {
 	public int compareTo(Object cub) throws UnsupportedOperationException {
 		throw new UnsupportedOperationException("Use SortByArea or SortByVolume");
 	}
+	
 }
